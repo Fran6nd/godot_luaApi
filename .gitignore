@@ -57,3 +57,7 @@ custom.py
 
 /external/bin
 /.idea/
+project/addons/luaAPI/.DS_Store
+project/addons/.DS_Store
+.gitignore
+project/.DS_Store

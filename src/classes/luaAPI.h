@@ -57,6 +57,7 @@ public:
 	Ref<LuaError> setRegistryValue(String name, Variant var);
 	Ref<LuaError> bindLibraries(TypedArray<String> libs);
 	Ref<LuaError> doFile(String fileName);
+	void kill();
 	Ref<LuaError> doString(String code);
 	Ref<LuaError> pushGlobalVariant(String name, Variant var);
 

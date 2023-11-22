@@ -27,80 +27,12 @@ env:
   GODOT_VERSION: 4.1.2
 
 jobs:
-
-  linux-build:
-    name: 🐧 Linux
-    uses: ./.github/workflows/linux.yml
-    with:
-      fullbuild: ${{ github.event_name == 'workflow_dispatch' }}
-      godot_version: 4.1.2
-
-  macos-build:
-    name: 🍎 macOS
-    uses: ./.github/workflows/macos-build.yml
-    with:
-      fullbuild: ${{ github.event_name == 'workflow_dispatch' }}
-      godot_version: 4.1.2
-  
-  macos-package:
-    name: 🍎 macOS Package
-    needs: macos-build
-    uses: ./.github/workflows/macos-package.yml
-    with:
-      fullbuild: ${{ github.event_name == 'workflow_dispatch' }}
-      godot_version: 4.1.2
-  
-  android-build:
-    name: 🤖 Android
-    uses: ./.github/workflows/android-build.yml
-    with:
-      fullbuild: ${{ github.event_name == 'workflow_dispatch' }}
-      godot_version: 4.1.2
-  
-  android-package:
-    name: 🤖 Android Package
-    if: ${{ github.event_name == 'workflow_dispatch' }}
-    needs: android-build
-    uses: ./.github/workflows/android-package.yml
-    
-  ios-build:
-    name: 🍎 IOS
-    uses: ./.github/workflows/ios-build.yml
-    with:
-      fullbuild: ${{ github.event_name == 'workflow_dispatch' }}
-      godot_version: 4.1.2
-  
-  ios-package:
-    name: 🍎 IOS Package
-    if: ${{ github.event_name == 'workflow_dispatch' }}
-    needs: ios-build
-    uses: ./.github/workflows/ios-package.yml
-  
-  web-build:
-    name: 🌐 Web
-    uses: ./.github/workflows/web.yml
-    with:
-      fullbuild: ${{ github.event_name == 'workflow_dispatch' }}
-      godot_version: 4.1.2
-
-  windows-build:
-    name: 🎨 Windows
-    uses: ./.github/workflows/windows.yml
-    with:
-      fullbuild: ${{ github.event_name == 'workflow_dispatch' }}
-      godot_version: 4.1.2
-  
   gdextension-build:
     name: ⚙️ GDExtension
     uses: ./.github/workflows/gdextension.yml
     with:
       fullbuild: ${{ github.event_name == 'workflow_dispatch' }}
       godot_version: 4.1.2
-  
-  module-unit-tests:
-    name: ⚙️ Module Unit Tests
-    needs: linux-build
-    uses: ./.github/workflows/module-unit-tests.yml
   
   gdextension-unit-tests:
     name: ⚙️ GDExtension Unit Tests

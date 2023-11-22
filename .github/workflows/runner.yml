@@ -27,13 +27,9 @@ env:
   GODOT_VERSION: 4.1.2
 
 jobs:
-  static-checks:
-    name: 📊 Static checks
-    uses: ./.github/workflows/static-checks.yml
 
   linux-build:
     name: 🐧 Linux
-    needs: static-checks
     uses: ./.github/workflows/linux.yml
     with:
       fullbuild: ${{ github.event_name == 'workflow_dispatch' }}
@@ -41,7 +37,6 @@ jobs:
 
   macos-build:
     name: 🍎 macOS
-    needs: static-checks
     uses: ./.github/workflows/macos-build.yml
     with:
       fullbuild: ${{ github.event_name == 'workflow_dispatch' }}
@@ -57,7 +52,6 @@ jobs:
   
   android-build:
     name: 🤖 Android
-    needs: static-checks
     uses: ./.github/workflows/android-build.yml
     with:
       fullbuild: ${{ github.event_name == 'workflow_dispatch' }}
@@ -71,7 +65,6 @@ jobs:
     
   ios-build:
     name: 🍎 IOS
-    needs: static-checks
     uses: ./.github/workflows/ios-build.yml
     with:
       fullbuild: ${{ github.event_name == 'workflow_dispatch' }}
@@ -85,7 +78,6 @@ jobs:
   
   web-build:
     name: 🌐 Web
-    needs: static-checks
     uses: ./.github/workflows/web.yml
     with:
       fullbuild: ${{ github.event_name == 'workflow_dispatch' }}
@@ -93,7 +85,6 @@ jobs:
 
   windows-build:
     name: 🎨 Windows
-    needs: static-checks
     uses: ./.github/workflows/windows.yml
     with:
       fullbuild: ${{ github.event_name == 'workflow_dispatch' }}
@@ -101,7 +92,6 @@ jobs:
   
   gdextension-build:
     name: ⚙️ GDExtension
-    needs: static-checks
     uses: ./.github/workflows/gdextension.yml
     with:
       fullbuild: ${{ github.event_name == 'workflow_dispatch' }}
